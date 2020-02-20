@@ -24,8 +24,8 @@ const Todo = ({ id, note }) => ({
     }, DELAY);
   },
 });
-module.exports = {
-  create({ note }) {
+// module.exports = {
+  function create({ note }) {
     return new Promise((resolve) => {
       setTimeout(() => {
         const id = Date.now().toString();
@@ -37,24 +37,36 @@ module.exports = {
         resolve(Todo(todoById[id]));
       }, DELAY);
     });
-  },
-  findAll() {
+  }
+  function findAll() {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(todoIds.map(id => Todo(todoById[id])));
       }, DELAY);
     });
-  },
-  findById(id) {
+  }
+  function findById(id) {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(Todo(todoById[id]));
       }, DELAY);
     });
-  },
+  }
 
-  createToDoList(){
+  function createToDoList(){
     var noteText = document.getElementById('noteToDo');
     this.create({ noteText});
   }
-};
+
+  function appendData() {
+    var mainContainer = document.getElementById("myData");
+    var result = await findAll();
+    console.log(result.promei);
+    for (var i = 0; i < todoById.length; i++) {
+        var div = document.createElement("addTodosHere");
+        div.innerHTML = todoById[i].note;
+        mainContainer.appendChild(div);
+    }
+  }
+
+// };

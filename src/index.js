@@ -11,10 +11,18 @@
 // });
 
 const Todo = require('./Todo');
+// const indexJS = require('./index');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
+
+// app.use(express.static('public'));
+// app.use(express.static(path.join(__dirname, 'src')))
+
+app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '/public'));
+// app.use('/img',express.static(path.join(__dirname, 'public/images')));
 
 app.use((req, res, next) => {
     res.setHeader('cache-control', 'private, max-age=0, no-cache, no-store, must-revalidate');
@@ -26,6 +34,9 @@ app.use((req, res, next) => {
 app.get('/', (req, res) => res.sendFile(__dirname+'/index.html'));
 app.get('/addTodo', (req, res) => res.sendFile(__dirname+'/addTodo.html'));
 
+app.get('/addTodojs', (req, res) => res.sendFile(__dirname+'/Todo.js'));
+
+// app.get('/index.js', (req, res) => res.sendFile(__dirname+'/index.js'));
 app.get('/todos', (_, res) => {
     Todo.findAll().then((todos) => {
       res.send(todos);

@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- <script src="./Todo.js"></script> -->
+  <script type="text/javascript" src="addTodojs"></script>
+  <!-- <link rel="stylesheet" type="text/css" href="css/style.css" /> -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 </head>
 <body>
     <form action="/todos" method="post">
         <input id = "noteToDo" type = "text" name = "note" />
-        <input type="button" onclick="createToDoList()" name="add" value="Add" />
+        <input type="button" onclick="appendData()" name="add" value="Add" />
     </form>
 <hr>
 <div id="addTodosHere"></div>
  
-<script src="index.js"></script>
+
 </body>
 </html>
  
