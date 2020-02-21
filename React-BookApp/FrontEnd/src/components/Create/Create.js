@@ -33,7 +33,7 @@ class Create extends Component{
     }
 
     submitLogin = (e) => {
-        var headers = new Headers();
+        // var headers = new Headers();
         //prevent page from refresh
         // console.log(this.state);
         e.preventDefault();
@@ -42,25 +42,31 @@ class Create extends Component{
             Title : this.state.Title,
             Author : this.state.Author
         }
+        console.log(data.BookID);
+        console.log(data.Title);
+        console.log(data.Author);
+
+        if(data.BookID && data.Title && data.Author){
+
         //set the with credentials to true
         axios.defaults.withCredentials = true;
         //make a post request with the user data
         axios.post('http://localhost:3001/create',data)
             .then(response => {
                 console.log("Status Code Create : ",response.data);
-                // console.log(response.data);
                 if(response.data === 'Book_Id_Exists'){
                     alert("Book already there");
                 }
                 if(response.data === 'Successful_Insertion'){
-                    console.log('Successssss');
-                    // history.push('/home');
                      window.open('/home', "_self");
                 }
-                //     // alert('BookID ' + this.state.BookID + 'already exists');
-                //     console.log('Not entered');
-                // }
+
             });
+        }
+            else{
+                alert('One of the inputs is missing');
+                console.log('Something missing');
+            }
     }
 
 
@@ -71,7 +77,7 @@ class Create extends Component{
             // redirectVar = <Redirect to= "/home"/>
         }
         else{
-            console.log('UNALLLLLLLBEEEEE');
+            // console.log('UNALLLLLLLBEEEEE');
             redirectVar = <Redirect to= "/home"/>
         }
         return(

@@ -5,7 +5,7 @@ import Home from './Home/Home';
 import Delete from './Delete/Delete';
 import Create from './Create/Create';
 import Navbar from './LandingPage/Navbar';
-import User from '../index.js'
+// import User from '../index.js'
 //Create a Main Component
 // console.log(props);
 class Main extends Component {

@@ -18,7 +18,7 @@ class Delete extends Component{
     }
 
     submitLogin = (e) => {
-        var headers = new Headers();
+        // var headers = new Headers();
         //prevent page from refresh
         // console.log(this.state);
         e.preventDefault();
